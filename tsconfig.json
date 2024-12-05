@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "lib": ["ES2019", "DOM", "ES6", "DOM.Iterable", "ScriptHost"],
+    "target": "ES5",
+    "lib": ["ES5"],
     "useDefineForClassFields": true,
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
+    "module": "ES2015",
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -16,17 +16,19 @@
 
     /* Bundler mode */
     "moduleResolution": "Node",
-    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
 
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Output directory */
+    "outDir": "./dist",
+    "rootDir": "./src"
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"]
 }

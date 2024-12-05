@@ -1,8 +1,8 @@
-import path, { resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
-import { globSync } from 'glob'
 import { defineConfig } from 'vitest/config'
 import dts from 'vite-plugin-dts'
+import path, { resolve } from 'path'
+import { globSync } from 'glob'
+import { fileURLToPath } from 'url'
 
 export default defineConfig({
   plugins: [
@@ -13,9 +13,10 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, './src/index.ts'),
-      formats: ['es'],
+      formats: ['es', 'cjs'],
     },
     emptyOutDir: true,
+    sourcemap: true,
     rollupOptions: {
       input: Object.fromEntries(
         globSync(['./src/index.ts', './src/modules/**/*.ts'])
@@ -31,19 +32,22 @@ export default defineConfig({
       ),
       output: {
         entryFileNames: '[name].js',
-        assetFileNames: 'assets/[name][extname]',
       },
     },
   },
   test: {
     globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/test/setup.ts',
-    css: true,
+    environment: 'node',
     coverage: {
       provider: 'v8',
-      include: ['./src/components', './src/modules'],
-      exclude: ['./src/stories'],
+      reporter: ['text', 'json', 'html'],
+      exclude: [
+        'src/modules/**/*.test.ts',
+        'src/test/*.ts',
+        '.eslintrc.cjs',
+        'src/index.ts',
+        'src/**/*.d.ts',
+      ],
     },
   },
 })
