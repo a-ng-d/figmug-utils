@@ -18,7 +18,8 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
 
     /* Linting */
     "strict": true,

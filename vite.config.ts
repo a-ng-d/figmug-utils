@@ -13,7 +13,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, './src/index.ts'),
-      formats: ['es', 'cjs'],
+      formats: ['es'],
     },
     emptyOutDir: true,
     sourcemap: true,
