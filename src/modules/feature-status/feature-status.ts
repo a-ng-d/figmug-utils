@@ -25,15 +25,18 @@ export class FeatureStatus<T> {
   }
 
   isActive(): boolean {
-    return this.result?.isActive ?? true
+    if (this.result === undefined) return true
+    else return this.result.isActive
   }
 
   isPro(): boolean {
-    return this.result?.isPro ?? false
+    if (this.result === undefined) return true
+    else return this.result.isPro
   }
 
   isNew(): boolean {
-    return this.result?.isNew ?? false
+    if (this.result === undefined) return true
+    else return this.result.isNew
   }
 
   isBlocked(): boolean {
