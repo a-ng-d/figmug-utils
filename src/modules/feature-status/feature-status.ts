@@ -62,9 +62,7 @@ export class FeatureStatus<T> {
   }
 
   isAvailableAndBlocked(): string | null | undefined {
-    if (this.isActive())
-      if (!this.isBlocked()) return this.suggestion
-      else return null
+    if (!this.isBlocked()) return this.suggestion
     else return null
   }
 }
