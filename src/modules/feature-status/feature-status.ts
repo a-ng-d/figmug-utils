@@ -30,12 +30,12 @@ export class FeatureStatus<T> {
   }
 
   isPro(): boolean {
-    if (this.result === undefined) return true
+    if (this.result === undefined) return false
     else return this.result.isPro
   }
 
   isNew(): boolean {
-    if (this.result === undefined) return true
+    if (this.result === undefined) return false
     else return this.result.isNew
   }
 
