@@ -9,6 +9,7 @@ const features: Array<Feature<'BROWSE' | 'PARTICIPATE'>> = [
     isActive: true,
     isPro: false,
     isNew: false,
+    limit: 2,
     type: 'SERVICE',
     service: ['BROWSE'],
   },
@@ -67,6 +68,14 @@ describe('FeatureStatus', () => {
           featureName: 'BROWSE',
           planStatus: 'PAID',
         }).isBlocked()
+      ).toBe(false)
+
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'BROWSE',
+          planStatus: 'UNPAID',
+        }).isReached(3)
       ).toBe(false)
     })
   })

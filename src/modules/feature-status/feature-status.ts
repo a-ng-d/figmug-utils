@@ -54,8 +54,10 @@ export class FeatureStatus<T> {
     const match = this.result
 
     if (match !== undefined && match.limit !== undefined) {
-      if (this.planStatus === 'UNPAID')
-        return current >= (match.limit as number) ? true : false
+      if (match.isPro)
+        if (this.planStatus === 'UNPAID')
+          return current >= (match.limit as number) ? true : false
+        else return false
       else return false
     } else if (match !== undefined && match.limit === undefined) return false
     else return true
