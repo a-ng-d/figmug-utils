@@ -25,7 +25,7 @@ const features: Array<Feature<'BROWSE' | 'PARTICIPATE'>> = [
     name: 'ADD',
     description: '',
     isActive: true,
-    isPro: false,
+    isPro: true,
     isNew: false,
     limit: 10,
     type: 'SERVICE',
@@ -160,6 +160,22 @@ describe('FeatureStatus', () => {
           featureName: 'ADD',
           planStatus: 'UNPAID',
         }).isReached(10)
+      ).toBe(true)
+
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'ADD',
+          planStatus: 'PAID',
+        }).isReached(10)
+      ).toBe(false)
+
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'ADD',
+          planStatus: 'UNPAID',
+        }).isReached(12)
       ).toBe(true)
 
       expect(
