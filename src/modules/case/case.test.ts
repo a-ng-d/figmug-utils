@@ -1,5 +1,5 @@
 import { it, expect } from 'vitest'
-import { Case } from './case'
+import Case from './case'
 
 it('renders with the correct Camel Case', () => {
   expect(

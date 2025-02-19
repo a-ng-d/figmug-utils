@@ -13,6 +13,10 @@
     "declarationMap": true,
     "baseUrl": ".",
     "typeRoots": ["./node_modules/@types"],
+    "paths": {
+      "@modules/*": ["src/modules/*"],
+      "@tps/*": ["src/types/*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "Node",

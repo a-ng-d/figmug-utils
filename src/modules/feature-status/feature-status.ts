@@ -1,6 +1,6 @@
-import { Feature, PlanStatus } from 'src/types/feature.types'
+import { Feature, PlanStatus } from '@tps/feature.types'
 
-export class FeatureStatus<T> {
+export default class FeatureStatus<T> {
   features: Array<Feature<T>>
   featureName: string
   planStatus: PlanStatus

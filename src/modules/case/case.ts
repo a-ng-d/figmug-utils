@@ -1,4 +1,4 @@
-export class Case {
+export default class Case {
   string: string
 
   constructor(string: string) {

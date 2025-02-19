@@ -1,4 +1,4 @@
-export const doMap = (
+const doMap = (
   value: number,
   oldMin: number,
   oldMax: number,
@@ -10,3 +10,5 @@ export const doMap = (
 
   return ((value - oldMin) * newRange) / oldRange + newMin
 }
+
+export default doMap
