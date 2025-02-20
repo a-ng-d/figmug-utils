@@ -5,7 +5,8 @@ export default class FeatureStatus<T> {
   featureName: string
   planStatus: PlanStatus
   suggestion?: string
-  result: Feature<T> | undefined
+  result?: Feature<T>
+  limit?: number
 
   constructor(data: {
     features: Array<Feature<T>>
@@ -18,6 +19,7 @@ export default class FeatureStatus<T> {
     this.planStatus = data.planStatus
     this.suggestion = data.suggestion
     this.result = this.getFeature()
+    this.limit = this.result?.limit ?? 99
   }
 
   getFeature(): Feature<T> | undefined {
