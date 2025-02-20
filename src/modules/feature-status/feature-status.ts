@@ -19,7 +19,7 @@ export default class FeatureStatus<T> {
     this.planStatus = data.planStatus
     this.suggestion = data.suggestion
     this.result = this.getFeature()
-    this.limit = this.result?.limit ?? 99
+    this.limit = this.result === undefined ? 42 : this.result.limit
   }
 
   getFeature(): Feature<T> | undefined {
