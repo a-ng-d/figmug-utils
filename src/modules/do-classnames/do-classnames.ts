@@ -1,4 +1,4 @@
-const doClassnames = (classes: Array<string | null | undefined>) => {
+const doClassnames = (classes: Array<string | null | undefined | boolean>) => {
   return classes.filter((n) => n).join(' ')
 }
 
