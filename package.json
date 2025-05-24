@@ -1,7 +1,7 @@
 {
   "name": "@a_ng_d/figmug-utils",
   "version": "0.2.2",
-  "description": "Figmug Utils is a comprehensive library of utilities modules for building plugins.",
+  "description": "A collection of lightweight, platform-agnostic utility modules designed to accelerate plugin development. These modules provide common functionalities that can be used across any JavaScript/TypeScript project, making them perfect for plugins, extensions, or any web application.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/a-ng-d/figmug-utils.git"
