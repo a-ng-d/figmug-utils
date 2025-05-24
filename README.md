@@ -1,19 +1,10 @@
-![GitHub package.json version](https://img.shields.io/github/package-json/v/a-ng-d/figmug-utils?color=informational) ![GitHub last commit](https://img.shields.io/github/last-commit/a-ng-d/figmug-utils?color=informational) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/a-ng-d/figmug-utils/npm.yml?label=npm) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/a-ng-d/figmug-utils/chromatic.yml?label=Chromatic) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/a-ng-d/figmug-utils/deploy.yml?label=Deployment)
-![GitHub](https://img.shields.io/github/license/a-ng-d/figmug-utils?color=informational)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/a-ng-d/figmug-utils?color=informational) ![GitHub last commit](https://img.shields.io/github/last-commit/a-ng-d/figmug-utils?color=informational) ![GitHub](https://img.shields.io/github/license/a-ng-d/figmug-utils?color=informational)
 
 # Figmug Utils
 
-Figmug Utils is a comprehensive library of utilities modules for building Figma plugins.
-
-## Features
-
-- **Bundled with Vite**: Fast and optimized build tool for modern web projects.
-- **Tested with Jest and Vitest**: Ensures reliability and robustness of components.
-- **Exposed with Storybook**: Interactive UI component explorer for easy development and testing.
+A collection of lightweight, platform-agnostic utility modules designed to accelerate plugin development. These modules provide common functionalities that can be used across any JavaScript/TypeScript project, making them perfect for plugins, extensions, or any web application.
 
 ## Installation
-
-To install Figmug UI, use npm or yarn:
 
 ```bash
 npm install figmug-utils
@@ -21,16 +12,79 @@ npm install figmug-utils
 yarn add figmug-utils
 ```
 
-## Testing
+## Available Modules
 
-To run tests, use the following commands:
+### Case Transformer
+Convert strings between different case formats:
+
+```typescript
+import { Case } from 'figmug-utils'
+
+const text = new Case('Hello World Example')
+text.doSnakeCase()    // 'hello_world_example'
+text.doCamelCase()    // 'helloWorldExample'
+text.doPascalCase()   // 'HelloWorldExample'
+text.doKebabCase()    // 'hello-world-example'
+```
+
+### Feature Status
+Manage feature flags and access control:
+
+```typescript
+import { FeatureStatus } from 'figmug-utils'
+
+const feature = new FeatureStatus({
+  features: features,
+  featureName: 'PREMIUM_FEATURE',
+  planStatus: 'UNPAID',
+  suggestion: 'Upgrade to access this feature'
+})
+
+if (feature.isBlocked()) {
+  console.log(feature.isAvailableAndBlocked())  // 'Upgrade to access this feature'
+}
+```
+
+### Class Names Utility
+Clean conditional class name concatenation:
+
+```typescript
+import { doClassnames } from 'figmug-utils'
+
+const classes = doClassnames([
+  'button',
+  isActive && 'active',
+  isPrimary && 'primary',
+  undefined,
+  null
+]) // Returns: 'button active primary'
+```
+
+## Why Figmug Utils?
+
+- 🎯 **Platform Agnostic**: Works anywhere JavaScript runs
+- 🪶 **Lightweight**: Each module can be imported independently
+- 📦 **Zero Dependencies**: Pure JavaScript implementations
+- 🔒 **Type-Safe**: Written in TypeScript with full type definitions
+- 🧪 **Well Tested**: Comprehensive test coverage
+
+## Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run tests
 npm test
-# or
-yarn test
+
+# Build the library
+npm run build
 ```
+
+## Contributing
+
+We welcome contributions! Please see our contributing guidelines for details.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
