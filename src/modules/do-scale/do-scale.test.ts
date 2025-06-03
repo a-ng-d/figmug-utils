@@ -23,15 +23,15 @@ describe('doScale', () => {
 
   it('should handle all easing modes', () => {
     const modes = [
-      'SLOW_EASE_IN',
-      'SLOW_EASE_OUT',
-      'SLOW_EASE_IN_OUT',
-      'EASE_IN',
-      'EASE_OUT',
-      'EASE_IN_OUT',
-      'FAST_EASE_IN',
-      'FAST_EASE_OUT',
-      'FAST_EASE_IN_OUT',
+      'EASEIN_SINE',
+      'EASEOUT_SINE',
+      'EASEINOUT_SINE',
+      'EASEIN_QUAD',
+      'EASEOUT_QUAD',
+      'EASEINOUT_QUAD',
+      'EASEIN_CUBIC',
+      'EASEOUT_CUBIC',
+      'EASEINOUT_CUBIC',
     ]
 
     modes.forEach((mode) => {
@@ -55,7 +55,7 @@ describe('doScale', () => {
   })
 
   it('should handle specific easing conditions', () => {
-    const result = doScale([0, 1, 2], 0, 100, 'EASE_IN_OUT')
+    const result = doScale([0, 1, 2], 0, 100, 'EASEINOUT_QUAD')
     expect(result[1]).toBeDefined()
 
     const manyStops = Array.from({ length: 10 }, (_, i) => i)
