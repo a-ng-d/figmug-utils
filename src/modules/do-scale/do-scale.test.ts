@@ -1,6 +1,6 @@
+import { it, expect, describe } from 'vitest'
 import { Easing } from '@tps/easing.types'
 import doScale from './do-scale'
-import { it, expect, describe } from 'vitest'
 
 describe('doScale', () => {
   it('should handle LINEAR mode (default)', () => {

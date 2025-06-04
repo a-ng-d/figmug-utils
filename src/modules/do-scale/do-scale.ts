@@ -1,5 +1,5 @@
-import doMap from '@modules/do-map/do-map'
 import { Easing } from '@tps/easing.types'
+import doMap from '@modules/do-map/do-map'
 
 const doScale = (
   stops: Array<number>,

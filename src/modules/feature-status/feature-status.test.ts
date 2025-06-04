@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import FeatureStatus from './feature-status'
 import { Feature } from '@tps/feature.types'
+import FeatureStatus from './feature-status'
 
 const features: Array<Feature<'BROWSE' | 'PARTICIPATE'>> = [
   {
