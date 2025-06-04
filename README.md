@@ -15,19 +15,21 @@ yarn add figmug-utils
 ## Available Modules
 
 ### Case Transformer
+
 Convert strings between different case formats:
 
 ```typescript
 import { Case } from 'figmug-utils'
 
 const text = new Case('Hello World Example')
-text.doSnakeCase()    // 'hello_world_example'
-text.doCamelCase()    // 'helloWorldExample'
-text.doPascalCase()   // 'HelloWorldExample'
-text.doKebabCase()    // 'hello-world-example'
+text.doSnakeCase() // 'hello_world_example'
+text.doCamelCase() // 'helloWorldExample'
+text.doPascalCase() // 'HelloWorldExample'
+text.doKebabCase() // 'hello-world-example'
 ```
 
 ### Feature Status
+
 Manage feature flags and access control:
 
 ```typescript
@@ -37,15 +39,16 @@ const feature = new FeatureStatus({
   features: features,
   featureName: 'PREMIUM_FEATURE',
   planStatus: 'UNPAID',
-  suggestion: 'Upgrade to access this feature'
+  suggestion: 'Upgrade to access this feature',
 })
 
 if (feature.isBlocked()) {
-  console.log(feature.isAvailableAndBlocked())  // 'Upgrade to access this feature'
+  console.log(feature.isAvailableAndBlocked()) // 'Upgrade to access this feature'
 }
 ```
 
 ### Class Names Utility
+
 Clean conditional class name concatenation:
 
 ```typescript
@@ -56,7 +59,7 @@ const classes = doClassnames([
   isActive && 'active',
   isPrimary && 'primary',
   undefined,
-  null
+  null,
 ]) // Returns: 'button active primary'
 ```
 
@@ -72,14 +75,14 @@ const classes = doClassnames([
 
 ```
 --------------------|---------|----------|---------|---------|-------------------
-File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 --------------------|---------|----------|---------|---------|-------------------
-All files           |     100 |    98.59 |     100 |     100 |                   
- case               |     100 |      100 |     100 |     100 |                   
- do-classnames      |     100 |      100 |     100 |     100 |                   
- do-map             |     100 |      100 |     100 |     100 |                   
- do-scale           |     100 |    95.45 |     100 |     100 | 41                
- feature-status     |     100 |      100 |     100 |     100 |                   
+All files           |     100 |    98.59 |     100 |     100 |
+ case               |     100 |      100 |     100 |     100 |
+ do-classnames      |     100 |      100 |     100 |     100 |
+ do-map             |     100 |      100 |     100 |     100 |
+ do-scale           |     100 |    95.45 |     100 |     100 | 41
+ feature-status     |     100 |      100 |     100 |     100 |
 ```
 
 ## Development
