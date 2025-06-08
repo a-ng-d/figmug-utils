@@ -10,14 +10,14 @@ export default class Case {
       .toLowerCase()
       .split(' ')
       .join('_')
-      .replace(/[@/$^%#&!?,;:+=<>(){}"«»]/g, '')
+      .replace(/[@/$^%#&!?.,;:+=<>(){}"«»]/g, '')
 
   doPascalCase = () =>
     this.string.charAt(0).toUpperCase() +
     this.string
       .toLowerCase()
       .replace(/[^a-zA-Z0-9]+(.)/g, (chr) => chr.toUpperCase())
-      .replace(/[@/$^%#&!?,;:+=<>(){}"«» ]/g, '')
+      .replace(/[@/$^%#&!?.,;:+=<>(){}"«» ]/g, '')
       .slice(1)
 
   doKebabCase = () =>
@@ -25,11 +25,11 @@ export default class Case {
       .toLowerCase()
       .split(' ')
       .join('-')
-      .replace(/[@/$^%#&!?,;:+=<>(){}"«»]/g, '')
+      .replace(/[@/$^%#&!?.,;:+=<>(){}"«»]/g, '')
 
   doCamelCase = () =>
     this.string
       .toLowerCase()
       .replace(/[^a-zA-Z0-9]+(.)/g, (chr) => chr.toUpperCase())
-      .replace(/[@/$^%#&!?,;:+=<>(){}"«» ]/g, '')
+      .replace(/[@/$^%#&!?.,;:+=<>(){}"«» ]/g, '')
 }
