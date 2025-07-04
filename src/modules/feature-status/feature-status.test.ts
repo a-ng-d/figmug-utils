@@ -51,6 +51,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'BROWSE',
           planStatus: 'UNPAID',
+          currentService: 'BROWSE',
         }).isActive()
       ).toBe(true)
 
@@ -59,6 +60,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'BROWSE',
           planStatus: 'UNPAID',
+          currentService: 'BROWSE',
         }).isBlocked()
       ).toBe(false)
 
@@ -67,6 +69,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'BROWSE',
           planStatus: 'PAID',
+          currentService: 'BROWSE',
         }).isBlocked()
       ).toBe(false)
 
@@ -75,6 +78,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'BROWSE',
           planStatus: 'UNPAID',
+          currentService: 'BROWSE',
         }).isReached(3)
       ).toBe(false)
     })
@@ -87,6 +91,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'PARTICIPATE',
           planStatus: 'PAID',
+          currentService: 'PARTICIPATE',
         }).isPro()
       ).toBe(true)
 
@@ -95,6 +100,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'PARTICIPATE',
           planStatus: 'UNPAID',
+          currentService: 'PARTICIPATE',
         }).isBlocked()
       ).toBe(true)
 
@@ -103,6 +109,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'PARTICIPATE',
           planStatus: 'PAID',
+          currentService: 'PARTICIPATE',
         }).isBlocked()
       ).toBe(false)
 
@@ -111,6 +118,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'PARTICIPATE',
           planStatus: 'PAID',
+          currentService: 'PARTICIPATE',
           suggestion: 'You can participate',
         }).isAvailableAndBlocked()
       ).toBe('You can participate')
@@ -124,6 +132,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'EXPLORE',
           planStatus: 'UNPAID',
+          currentService: 'BROWSE',
         }).isNew()
       ).toBe(true)
 
@@ -132,6 +141,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'EXPLORE',
           planStatus: 'PAID',
+          currentService: 'BROWSE',
         }).isNew()
       ).toBe(true)
 
@@ -140,6 +150,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'EXPLORE',
           planStatus: 'UNPAID',
+          currentService: 'BROWSE',
         }).isReached(8)
       ).toBe(false)
     })
@@ -152,6 +163,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'ADD',
           planStatus: 'UNPAID',
+          currentService: 'PARTICIPATE',
         }).isReached(8)
       ).toBe(false)
 
@@ -160,6 +172,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'ADD',
           planStatus: 'PAID',
+          currentService: 'PARTICIPATE',
         }).isReached(8)
       ).toBe(false)
 
@@ -168,6 +181,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'ADD',
           planStatus: 'UNPAID',
+          currentService: 'PARTICIPATE',
         }).isReached(10)
       ).toBe(true)
 
@@ -176,6 +190,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'ADD',
           planStatus: 'PAID',
+          currentService: 'PARTICIPATE',
         }).isReached(10)
       ).toBe(false)
 
@@ -184,6 +199,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'ADD',
           planStatus: 'UNPAID',
+          currentService: 'PARTICIPATE',
         }).isReached(12)
       ).toBe(true)
 
@@ -192,6 +208,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'ADD',
           planStatus: 'PAID',
+          currentService: 'PARTICIPATE',
         }).isReached(12)
       ).toBe(false)
     })
@@ -204,6 +221,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'REMOVE',
           planStatus: 'PAID',
+          currentService: 'BROWSE',
         }).isActive()
       ).toBe(true)
 
@@ -212,6 +230,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'REMOVE',
           planStatus: 'PAID',
+          currentService: 'BROWSE',
         }).isPro()
       ).toBe(false)
 
@@ -220,6 +239,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'REMOVE',
           planStatus: 'PAID',
+          currentService: 'BROWSE',
         }).isNew()
       ).toBe(false)
 
@@ -228,6 +248,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'REMOVE',
           planStatus: 'PAID',
+          currentService: 'BROWSE',
         }).isBlocked()
       ).toBe(true)
 
@@ -236,6 +257,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'REMOVE',
           planStatus: 'PAID',
+          currentService: 'BROWSE',
         }).isReached(3)
       ).toBe(true)
 
@@ -244,6 +266,7 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'REMOVE',
           planStatus: 'PAID',
+          currentService: 'BROWSE',
           suggestion: 'You can remove this feature',
         }).isAvailableAndBlocked()
       ).toBe(null)
@@ -253,9 +276,50 @@ describe('FeatureStatus', () => {
           features: features,
           featureName: 'REMOVE',
           planStatus: 'PAID',
+          currentService: 'BROWSE',
           suggestion: 'You can remove this feature',
         }).isAvailableAndBlocked()
       ).toBe(null)
+    })
+  })
+
+  describe('Service name not in feature', () => {
+    it('should return false for isBlocked and isReached when currentService is not in feature service list', () => {
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'PARTICIPATE',
+          planStatus: 'UNPAID',
+          currentService: 'BROWSE',
+        }).isBlocked()
+      ).toBe(false)
+
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'ADD',
+          planStatus: 'UNPAID',
+          currentService: 'BROWSE',
+        }).isReached(12)
+      ).toBe(false)
+
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'BROWSE',
+          planStatus: 'UNPAID',
+          currentService: 'PARTICIPATE',
+        }).isBlocked()
+      ).toBe(false)
+
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'BROWSE',
+          planStatus: 'UNPAID',
+          currentService: 'PARTICIPATE',
+        }).isReached(3)
+      ).toBe(false)
     })
   })
 })

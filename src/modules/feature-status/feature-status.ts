@@ -4,6 +4,7 @@ export default class FeatureStatus<T> {
   features: Array<Feature<T>>
   featureName: string
   planStatus: PlanStatus
+  currentService: T
   suggestion?: string
   result?: Feature<T>
   limit?: number
@@ -12,11 +13,13 @@ export default class FeatureStatus<T> {
     features: Array<Feature<T>>
     featureName: string
     planStatus: PlanStatus
+    currentService: T
     suggestion?: string
   }) {
     this.features = data.features
     this.featureName = data.featureName
     this.planStatus = data.planStatus
+    this.currentService = data.currentService
     this.suggestion = data.suggestion
     this.result = this.getFeature()
     this.limit = this.result === undefined ? 42 : this.result.limit
@@ -44,25 +47,37 @@ export default class FeatureStatus<T> {
   isBlocked(): boolean {
     const match = this.result
 
-    if (match !== undefined)
-      if (match.isPro && this.planStatus === 'PAID') return false
-      else if (!match.isPro && this.planStatus === 'PAID') return false
-      else if (!match.isPro && this.planStatus === 'UNPAID') return false
-      else return true
-    else return true
+    if (match === undefined) return true
+
+    if (!match.service.includes(this.currentService)) return false
+
+    if (match.isPro && this.planStatus === 'PAID') return false
+    if (!match.isPro && this.planStatus === 'PAID') return false
+    if (!match.isPro && this.planStatus === 'UNPAID') return false
+
+    return true
   }
 
   isReached(current: number): boolean {
     const match = this.result
 
-    if (match !== undefined && match.limit !== undefined) {
-      if (match.isPro)
-        if (this.planStatus === 'UNPAID')
-          return current >= (match.limit as number) ? true : false
-        else return false
-      else return false
-    } else if (match !== undefined && match.limit === undefined) return false
-    else return true
+    if (match === undefined) return true
+
+    if (!match.service.includes(this.currentService)) return false
+
+    if (match.limit !== undefined) {
+      if (match.isPro) {
+        if (this.planStatus === 'UNPAID') {
+          return current >= (match.limit as number)
+        } else {
+          return false
+        }
+      } else {
+        return false
+      }
+    } else {
+      return false
+    }
   }
 
   isAvailableAndBlocked(): string | null | undefined {
