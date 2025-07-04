@@ -73,20 +73,19 @@ const classes = doClassnames([
 
 ## Test Coverage
 
-File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
---------------------|---------|----------|---------|---------|-------------------
-All files           |     100 |    98.61 |     100 |     100 |                   
- case               |     100 |      100 |     100 |     100 |                   
-  case.ts           |     100 |      100 |     100 |     100 |                   
- do-classnames      |     100 |      100 |     100 |     100 |                   
-  do-classnames.ts  |     100 |      100 |     100 |     100 |                   
- do-map             |     100 |      100 |     100 |     100 |                   
-  do-map.ts         |     100 |      100 |     100 |     100 |                   
- do-scale           |     100 |    95.45 |     100 |     100 |                   
-  do-scale.ts       |     100 |    95.45 |     100 |     100 | 41                
- feature-status     |     100 |      100 |     100 |     100 |                   
-  feature-status.ts |     100 |      100 |     100 |     100 |                   
-
+File                | % Stmts | % Branch | % Funcs | % Lines 
+--------------------|---------|----------|---------|---------
+All files           |     100 |    98.61 |     100 |     100
+ case               |     100 |      100 |     100 |     100
+  case.ts           |     100 |      100 |     100 |     100
+ do-classnames      |     100 |      100 |     100 |     100
+  do-classnames.ts  |     100 |      100 |     100 |     100
+ do-map             |     100 |      100 |     100 |     100 
+  do-map.ts         |     100 |      100 |     100 |     100
+ do-scale           |     100 |    95.45 |     100 |     100
+  do-scale.ts       |     100 |    95.45 |     100 |     100
+ feature-status     |     100 |      100 |     100 |     100             
+  feature-status.ts |     100 |      100 |     100 |     100 
 
 ## Development
 
