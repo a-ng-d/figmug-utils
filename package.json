@@ -1,6 +1,6 @@
 {
   "name": "@a_ng_d/figmug-utils",
-  "version": "0.3.5",
+  "version": "0.4.0",
   "description": "A collection of lightweight, platform-agnostic utility modules designed to accelerate plugin development. These modules provide common functionalities that can be used across any JavaScript/TypeScript project, making them perfect for plugins, extensions, or any web application.",
   "repository": {
     "type": "git",
