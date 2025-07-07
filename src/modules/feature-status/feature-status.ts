@@ -5,7 +5,7 @@ export default class FeatureStatus<T> {
   featureName: string
   planStatus: PlanStatus
   currentService: T
-  currentEditor: 'figma' | 'dev' | 'figjam' | 'slides' | 'penpot'
+  currentEditor: 'figma' | 'dev' | 'dev_vscode' | 'figjam' | 'slides' | 'penpot'
   suggestion?: string
   result?: Feature<T>
   limit?: number
@@ -15,7 +15,13 @@ export default class FeatureStatus<T> {
     featureName: string
     planStatus: PlanStatus
     currentService: T
-    currentEditor: 'figma' | 'dev' | 'figjam' | 'slides' | 'penpot'
+    currentEditor:
+      | 'figma'
+      | 'dev'
+      | 'dev_vscode'
+      | 'figjam'
+      | 'slides'
+      | 'penpot'
     suggestion?: string
   }) {
     this.features = data.features

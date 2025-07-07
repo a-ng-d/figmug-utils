@@ -6,7 +6,7 @@ export interface Feature<T> {
   isNew: boolean
   limit?: number
   availabilityForEditors: Array<
-    'figma' | 'dev' | 'figjam' | 'slides' | 'penpot'
+    'figma' | 'dev' | 'dev_vscode' | 'figjam' | 'slides' | 'penpot'
   >
   proForServices: Array<T>
   type: 'SERVICE' | 'DIVISION' | 'ACTION' | 'CONTEXT'
