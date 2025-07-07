@@ -5,6 +5,7 @@ export default class FeatureStatus<T> {
   featureName: string
   planStatus: PlanStatus
   currentService: T
+  currentEditor: 'figma' | 'dev' | 'figjam' | 'slides' | 'penpot'
   suggestion?: string
   result?: Feature<T>
   limit?: number
@@ -14,12 +15,14 @@ export default class FeatureStatus<T> {
     featureName: string
     planStatus: PlanStatus
     currentService: T
+    currentEditor: 'figma' | 'dev' | 'figjam' | 'slides' | 'penpot'
     suggestion?: string
   }) {
     this.features = data.features
     this.featureName = data.featureName
     this.planStatus = data.planStatus
     this.currentService = data.currentService
+    this.currentEditor = data.currentEditor
     this.suggestion = data.suggestion
     this.result = this.getFeature()
     this.limit = this.result === undefined ? 42 : this.result.limit
@@ -31,6 +34,8 @@ export default class FeatureStatus<T> {
 
   isActive(): boolean {
     if (this.result === undefined) return true
+    if (!this.result.availabilityForEditors.includes(this.currentEditor))
+      return false
     else return this.result.isActive
   }
 
@@ -49,7 +54,7 @@ export default class FeatureStatus<T> {
 
     if (match === undefined) return true
 
-    if (!match.service.includes(this.currentService)) return false
+    if (!match.proForServices.includes(this.currentService)) return false
 
     if (match.isPro && this.planStatus === 'PAID') return false
     if (!match.isPro && this.planStatus === 'PAID') return false
@@ -63,7 +68,7 @@ export default class FeatureStatus<T> {
 
     if (match === undefined) return true
 
-    if (!match.service.includes(this.currentService)) return false
+    if (!match.proForServices.includes(this.currentService)) return false
 
     if (match.limit !== undefined) {
       if (match.isPro) {

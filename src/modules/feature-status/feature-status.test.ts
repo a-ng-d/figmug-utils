@@ -11,7 +11,8 @@ const features: Array<Feature<'BROWSE' | 'PARTICIPATE'>> = [
     isNew: false,
     limit: 2,
     type: 'SERVICE',
-    service: ['BROWSE'],
+    availabilityForEditors: ['figma', 'dev', 'figjam', 'slides', 'penpot'],
+    proForServices: ['BROWSE'],
   },
   {
     name: 'PARTICIPATE',
@@ -20,7 +21,8 @@ const features: Array<Feature<'BROWSE' | 'PARTICIPATE'>> = [
     isPro: true,
     isNew: false,
     type: 'SERVICE',
-    service: ['PARTICIPATE'],
+    availabilityForEditors: ['figma', 'figjam'],
+    proForServices: ['PARTICIPATE'],
   },
   {
     name: 'ADD',
@@ -30,7 +32,8 @@ const features: Array<Feature<'BROWSE' | 'PARTICIPATE'>> = [
     isNew: false,
     limit: 10,
     type: 'SERVICE',
-    service: ['PARTICIPATE'],
+    availabilityForEditors: ['figma', 'dev', 'figjam'],
+    proForServices: ['PARTICIPATE'],
   },
   {
     name: 'EXPLORE',
@@ -39,7 +42,8 @@ const features: Array<Feature<'BROWSE' | 'PARTICIPATE'>> = [
     isPro: true,
     isNew: true,
     type: 'CONTEXT',
-    service: ['BROWSE'],
+    availabilityForEditors: ['figma', 'dev'],
+    proForServices: ['BROWSE'],
   },
 ]
 
@@ -52,6 +56,7 @@ describe('FeatureStatus', () => {
           featureName: 'BROWSE',
           planStatus: 'UNPAID',
           currentService: 'BROWSE',
+          currentEditor: 'figma',
         }).isActive()
       ).toBe(true)
 
@@ -61,6 +66,7 @@ describe('FeatureStatus', () => {
           featureName: 'BROWSE',
           planStatus: 'UNPAID',
           currentService: 'BROWSE',
+          currentEditor: 'figma',
         }).isBlocked()
       ).toBe(false)
 
@@ -70,6 +76,7 @@ describe('FeatureStatus', () => {
           featureName: 'BROWSE',
           planStatus: 'PAID',
           currentService: 'BROWSE',
+          currentEditor: 'figma',
         }).isBlocked()
       ).toBe(false)
 
@@ -79,6 +86,7 @@ describe('FeatureStatus', () => {
           featureName: 'BROWSE',
           planStatus: 'UNPAID',
           currentService: 'BROWSE',
+          currentEditor: 'figma',
         }).isReached(3)
       ).toBe(false)
     })
@@ -92,6 +100,7 @@ describe('FeatureStatus', () => {
           featureName: 'PARTICIPATE',
           planStatus: 'PAID',
           currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
         }).isPro()
       ).toBe(true)
 
@@ -101,6 +110,7 @@ describe('FeatureStatus', () => {
           featureName: 'PARTICIPATE',
           planStatus: 'UNPAID',
           currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
         }).isBlocked()
       ).toBe(true)
 
@@ -110,6 +120,7 @@ describe('FeatureStatus', () => {
           featureName: 'PARTICIPATE',
           planStatus: 'PAID',
           currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
         }).isBlocked()
       ).toBe(false)
 
@@ -119,6 +130,7 @@ describe('FeatureStatus', () => {
           featureName: 'PARTICIPATE',
           planStatus: 'PAID',
           currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
           suggestion: 'You can participate',
         }).isAvailableAndBlocked()
       ).toBe('You can participate')
@@ -133,6 +145,7 @@ describe('FeatureStatus', () => {
           featureName: 'EXPLORE',
           planStatus: 'UNPAID',
           currentService: 'BROWSE',
+          currentEditor: 'dev',
         }).isNew()
       ).toBe(true)
 
@@ -142,6 +155,7 @@ describe('FeatureStatus', () => {
           featureName: 'EXPLORE',
           planStatus: 'PAID',
           currentService: 'BROWSE',
+          currentEditor: 'dev',
         }).isNew()
       ).toBe(true)
 
@@ -151,6 +165,7 @@ describe('FeatureStatus', () => {
           featureName: 'EXPLORE',
           planStatus: 'UNPAID',
           currentService: 'BROWSE',
+          currentEditor: 'dev',
         }).isReached(8)
       ).toBe(false)
     })
@@ -164,6 +179,7 @@ describe('FeatureStatus', () => {
           featureName: 'ADD',
           planStatus: 'UNPAID',
           currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
         }).isReached(8)
       ).toBe(false)
 
@@ -173,6 +189,7 @@ describe('FeatureStatus', () => {
           featureName: 'ADD',
           planStatus: 'PAID',
           currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
         }).isReached(8)
       ).toBe(false)
 
@@ -182,6 +199,7 @@ describe('FeatureStatus', () => {
           featureName: 'ADD',
           planStatus: 'UNPAID',
           currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
         }).isReached(10)
       ).toBe(true)
 
@@ -191,6 +209,7 @@ describe('FeatureStatus', () => {
           featureName: 'ADD',
           planStatus: 'PAID',
           currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
         }).isReached(10)
       ).toBe(false)
 
@@ -200,6 +219,7 @@ describe('FeatureStatus', () => {
           featureName: 'ADD',
           planStatus: 'UNPAID',
           currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
         }).isReached(12)
       ).toBe(true)
 
@@ -209,6 +229,7 @@ describe('FeatureStatus', () => {
           featureName: 'ADD',
           planStatus: 'PAID',
           currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
         }).isReached(12)
       ).toBe(false)
     })
@@ -222,6 +243,7 @@ describe('FeatureStatus', () => {
           featureName: 'REMOVE',
           planStatus: 'PAID',
           currentService: 'BROWSE',
+          currentEditor: 'figma',
         }).isActive()
       ).toBe(true)
 
@@ -231,6 +253,7 @@ describe('FeatureStatus', () => {
           featureName: 'REMOVE',
           planStatus: 'PAID',
           currentService: 'BROWSE',
+          currentEditor: 'figma',
         }).isPro()
       ).toBe(false)
 
@@ -240,6 +263,7 @@ describe('FeatureStatus', () => {
           featureName: 'REMOVE',
           planStatus: 'PAID',
           currentService: 'BROWSE',
+          currentEditor: 'figma',
         }).isNew()
       ).toBe(false)
 
@@ -249,6 +273,7 @@ describe('FeatureStatus', () => {
           featureName: 'REMOVE',
           planStatus: 'PAID',
           currentService: 'BROWSE',
+          currentEditor: 'figma',
         }).isBlocked()
       ).toBe(true)
 
@@ -258,6 +283,7 @@ describe('FeatureStatus', () => {
           featureName: 'REMOVE',
           planStatus: 'PAID',
           currentService: 'BROWSE',
+          currentEditor: 'figma',
         }).isReached(3)
       ).toBe(true)
 
@@ -267,6 +293,7 @@ describe('FeatureStatus', () => {
           featureName: 'REMOVE',
           planStatus: 'PAID',
           currentService: 'BROWSE',
+          currentEditor: 'figma',
           suggestion: 'You can remove this feature',
         }).isAvailableAndBlocked()
       ).toBe(null)
@@ -277,6 +304,7 @@ describe('FeatureStatus', () => {
           featureName: 'REMOVE',
           planStatus: 'PAID',
           currentService: 'BROWSE',
+          currentEditor: 'figma',
           suggestion: 'You can remove this feature',
         }).isAvailableAndBlocked()
       ).toBe(null)
@@ -291,6 +319,7 @@ describe('FeatureStatus', () => {
           featureName: 'PARTICIPATE',
           planStatus: 'UNPAID',
           currentService: 'BROWSE',
+          currentEditor: 'figma',
         }).isBlocked()
       ).toBe(false)
 
@@ -300,6 +329,7 @@ describe('FeatureStatus', () => {
           featureName: 'ADD',
           planStatus: 'UNPAID',
           currentService: 'BROWSE',
+          currentEditor: 'figma',
         }).isReached(12)
       ).toBe(false)
 
@@ -309,6 +339,7 @@ describe('FeatureStatus', () => {
           featureName: 'BROWSE',
           planStatus: 'UNPAID',
           currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
         }).isBlocked()
       ).toBe(false)
 
@@ -318,8 +349,55 @@ describe('FeatureStatus', () => {
           featureName: 'BROWSE',
           planStatus: 'UNPAID',
           currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
         }).isReached(3)
       ).toBe(false)
+    })
+  })
+
+  describe('Editor not in availabilityForEditors', () => {
+    it('should return false for isActive when currentEditor is not in availabilityForEditors list', () => {
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'PARTICIPATE',
+          planStatus: 'PAID',
+          currentService: 'PARTICIPATE',
+          currentEditor: 'penpot',
+        }).isActive()
+      ).toBe(false)
+
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'EXPLORE',
+          planStatus: 'PAID',
+          currentService: 'BROWSE',
+          currentEditor: 'figjam',
+        }).isActive()
+      ).toBe(false)
+    })
+
+    it('should return true for isActive when currentEditor is in availabilityForEditors list', () => {
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'PARTICIPATE',
+          planStatus: 'PAID',
+          currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
+        }).isActive()
+      ).toBe(true)
+
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'EXPLORE',
+          planStatus: 'PAID',
+          currentService: 'BROWSE',
+          currentEditor: 'dev',
+        }).isActive()
+      ).toBe(true)
     })
   })
 })

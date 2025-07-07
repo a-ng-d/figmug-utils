@@ -5,8 +5,11 @@ export interface Feature<T> {
   isPro: boolean
   isNew: boolean
   limit?: number
+  availabilityForEditors: Array<
+    'figma' | 'dev' | 'figjam' | 'slides' | 'penpot'
+  >
+  proForServices: Array<T>
   type: 'SERVICE' | 'DIVISION' | 'ACTION' | 'CONTEXT'
-  service: Array<T>
 }
 
 export type PlanStatus = 'UNPAID' | 'PAID' | 'NOT_SUPPORTED'
