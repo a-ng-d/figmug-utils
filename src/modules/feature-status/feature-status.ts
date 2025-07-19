@@ -1,11 +1,11 @@
-import { Feature, PlanStatus } from '@tps/feature.types'
+import { Editor, Feature, PlanStatus } from '@tps/feature.types'
 
 export default class FeatureStatus<T> {
   features: Array<Feature<T>>
   featureName: string
   planStatus: PlanStatus
   currentService: T
-  currentEditor: 'figma' | 'dev' | 'dev_vscode' | 'figjam' | 'slides' | 'penpot'
+  currentEditor: Editor
   suggestion?: string
   result?: Feature<T>
   limit?: number
@@ -15,13 +15,7 @@ export default class FeatureStatus<T> {
     featureName: string
     planStatus: PlanStatus
     currentService: T
-    currentEditor:
-      | 'figma'
-      | 'dev'
-      | 'dev_vscode'
-      | 'figjam'
-      | 'slides'
-      | 'penpot'
+    currentEditor: Editor
     suggestion?: string
   }) {
     this.features = data.features

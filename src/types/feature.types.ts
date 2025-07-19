@@ -5,19 +5,20 @@ export interface Feature<T> {
   isPro: boolean
   isNew: boolean
   limit?: number
-  availabilityForEditors: Array<
-    | 'figma'
-    | 'dev'
-    | 'dev_vscode'
-    | 'figjam'
-    | 'slides'
-    | 'penpot'
-    | 'sketch'
-    | 'framer'
-    | 'webflow'
-  >
+  availabilityForEditors: Array<Editor>
   proForServices: Array<T>
   type: 'SERVICE' | 'DIVISION' | 'ACTION' | 'CONTEXT'
 }
 
 export type PlanStatus = 'UNPAID' | 'PAID' | 'NOT_SUPPORTED'
+
+export type Editor =
+  | 'figma'
+  | 'dev'
+  | 'dev_vscode'
+  | 'figjam'
+  | 'slides'
+  | 'penpot'
+  | 'sketch'
+  | 'framer'
+  | 'webflow'
