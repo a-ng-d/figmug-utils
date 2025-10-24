@@ -5,6 +5,7 @@ export interface Feature<T> {
   isPro: boolean
   isNew: boolean
   limit?: number
+  availabilityForServices: Array<T>
   availabilityForEditors: Array<Editor>
   proForServices: Array<T>
   type: 'SERVICE' | 'DIVISION' | 'ACTION' | 'CONTEXT'

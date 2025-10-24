@@ -36,6 +36,8 @@ export default class FeatureStatus<T> {
     if (this.result === undefined) return true
     if (!this.result.availabilityForEditors.includes(this.currentEditor))
       return false
+    if (!this.result.availabilityForServices.includes(this.currentService))
+      return false
     else return this.result.isActive
   }
 
