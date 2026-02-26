@@ -1,15 +1,15 @@
-![GitHub package.json version](https://img.shields.io/github/package-json/v/a-ng-d/figmug-utils?color=informational) ![GitHub last commit](https://img.shields.io/github/last-commit/a-ng-d/figmug-utils?color=informational) ![GitHub](https://img.shields.io/github/license/a-ng-d/figmug-utils?color=informational)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/a-ng-d/unoff-utils?color=informational) ![GitHub last commit](https://img.shields.io/github/last-commit/a-ng-d/unoff-utils?color=informational) ![GitHub](https://img.shields.io/github/license/a-ng-d/unoff-utils?color=informational)
 
-# Figmug Utils
+# Unoff Utils
 
 A collection of lightweight, platform-agnostic utility modules designed to accelerate plugin development. These modules provide common functionalities that can be used across any JavaScript/TypeScript project, making them perfect for plugins, extensions, or any web application.
 
 ## Installation
 
 ```bash
-npm install figmug-utils
+npm install @unoff/utils
 # or
-yarn add figmug-utils
+yarn add @unoff/utils
 ```
 
 ## Available Modules
@@ -19,7 +19,7 @@ yarn add figmug-utils
 Convert strings between different case formats:
 
 ```typescript
-import { Case } from 'figmug-utils'
+import { Case } from '@unoff/utils'
 
 const text = new Case('Hello World Example')
 text.doSnakeCase() // 'hello_world_example'
@@ -33,7 +33,7 @@ text.doKebabCase() // 'hello-world-example'
 Manage feature flags, access control, and cross-platform availability:
 
 ```typescript
-import { FeatureStatus } from 'figmug-utils'
+import { FeatureStatus } from '@unoff/utils'
 
 // Define your features with editor and service availability
 const features = [
@@ -85,7 +85,7 @@ if (feature.isBlocked()) {
 Clean conditional class name concatenation:
 
 ```typescript
-import { doClassnames } from 'figmug-utils'
+import { doClassnames } from '@unoff/utils'
 
 const classes = doClassnames([
   'button',
@@ -101,7 +101,7 @@ const classes = doClassnames([
 Transform and manipulate data structures:
 
 ```typescript
-import { doMap } from 'figmug-utils'
+import { doMap } from '@unoff/utils'
 
 // Transform arrays with conditional logic
 const items = doMap([1, 2, 3, 4], (item) => 
@@ -114,7 +114,7 @@ const items = doMap([1, 2, 3, 4], (item) =>
 Handle scaling operations for design tools:
 
 ```typescript
-import { doScale } from 'figmug-utils'
+import { doScale } from '@unoff/utils'
 
 // Scale values with different algorithms
 const scaled = doScale(100, 1.5, 'linear') // Returns: 150
@@ -144,7 +144,7 @@ type PlanStatus = 'UNPAID' | 'PAID' | 'NOT_SUPPORTED'
 type Editor = 'figma' | 'dev' | 'dev_vscode' | 'figjam' | 'slides' | 'penpot' | 'sketch' | 'framer' | 'webflow'
 ```
 
-## Why Figmug Utils?
+## Why Unoff Utils?
 
 - 🎯 **Platform Agnostic**: Works across all major design tools and development environments
 - 🪶 **Lightweight**: Each module can be imported independently
@@ -159,7 +159,7 @@ type Editor = 'figma' | 'dev' | 'dev_vscode' | 'figjam' | 'slides' | 'penpot' | 
 ### Cross-Platform Feature Management
 
 ```typescript
-import { FeatureStatus } from 'figmug-utils'
+import { FeatureStatus } from '@unoff/utils'
 
 // Define features for a multi-platform plugin
 const pluginFeatures = [
@@ -206,7 +206,7 @@ console.log(checkFeature('sketch', 'DESIGN', 'PAID'))
 ### Combining Multiple Utilities
 
 ```typescript
-import { Case, doClassnames, FeatureStatus } from 'figmug-utils'
+import { Case, doClassnames, FeatureStatus } from '@unoff/utils'
 
 // Transform feature names and create CSS classes
 const createFeatureClasses = (featureName, status) => {

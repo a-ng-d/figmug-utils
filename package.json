@@ -1,8 +1,8 @@
 {
-  "name": "@a_ng_d/figmug-utils",
+  "name": "@unoff/utils",
   "version": "0.7.3",
   "description": "A collection of lightweight, platform-agnostic utility modules designed to accelerate plugin development. These modules provide common functionalities that can be used across any JavaScript/TypeScript project, making them perfect for plugins, extensions, or any web application.",
-  "repository": "https://github.com/a-ng-d/figmug-utils",
+  "repository": "https://github.com/a-ng-d/unoff-utils",
   "keywords": [
     "library",
     "modules",
@@ -12,9 +12,9 @@
   "author": "Aurélien Grimaud",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/a-ng-d/figmug-utils/issues"
+    "url": "https://github.com/a-ng-d/unoff-utils/issues"
   },
-  "homepage": "https://github.com/a-ng-d/figmug-utils#readme",
+  "homepage": "https://github.com/a-ng-d/unoff-utils#readme",
   "type": "module",
   "files": [
     "dist"
