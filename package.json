@@ -2,7 +2,7 @@
   "name": "@unoff/utils",
   "version": "0.8.1",
   "description": "A collection of lightweight, platform-agnostic utility modules designed to accelerate plugin development. These modules provide common functionalities that can be used across any JavaScript/TypeScript project, making them perfect for plugins, extensions, or any web application.",
-  "repository": "https://github.com/a-ng-d/unoff-utils",
+  "repository": "https://github.com/yelbolt/unoff-utils",
   "keywords": [
     "library",
     "modules",
@@ -12,9 +12,9 @@
   "author": "Aurélien Grimaud",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/a-ng-d/unoff-utils/issues"
+    "url": "https://github.com/yelbolt/unoff-utils/issues"
   },
-  "homepage": "https://github.com/a-ng-d/unoff-utils#readme",
+  "homepage": "https://github.com/yelbolt/unoff-utils#readme",
   "type": "module",
   "files": [
     "dist"
