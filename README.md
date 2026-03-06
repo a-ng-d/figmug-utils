@@ -1,4 +1,4 @@
-![GitHub package.json version](https://img.shields.io/github/package-json/v/a-ng-d/unoff-utils?color=informational) ![GitHub last commit](https://img.shields.io/github/last-commit/a-ng-d/unoff-utils?color=informational) ![GitHub](https://img.shields.io/github/license/a-ng-d/unoff-utils?color=informational)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/yelbolt/unoff-utils?color=informational) ![GitHub last commit](https://img.shields.io/github/last-commit/yelbolt/unoff-utils?color=informational) ![GitHub](https://img.shields.io/github/license/yelbolt/unoff-utils?color=informational)
 
 # Unoff Utils
 
