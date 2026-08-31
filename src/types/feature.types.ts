@@ -25,4 +25,5 @@ export type Editor =
   | 'penpot'
   | 'sketch'
   | 'framer'
-  | 'webflow'
+  | 'chrome'
+  | 'web'
