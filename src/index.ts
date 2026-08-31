@@ -1,4 +1,4 @@
-export type { Feature } from '@tps/feature.types'
+export type { AllOr, Editor, Feature, PlanStatus } from '@tps/feature.types'
 export type { Easing } from '@tps/easing.types'
 
 export { default as doMap } from '@modules/do-map/do-map'

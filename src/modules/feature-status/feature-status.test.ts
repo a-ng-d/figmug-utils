@@ -72,6 +72,18 @@ const features: Array<Feature<'BROWSE' | 'PARTICIPATE'>> = [
     availabilityForServices: ['PARTICIPATE'],
     proForServices: ['PARTICIPATE'],
   },
+  {
+    name: 'SHARE',
+    description: '',
+    isActive: true,
+    isPro: true,
+    isNew: false,
+    type: 'ACTION',
+    availabilityForEditors: 'all',
+    availabilityForServices: 'all',
+    proForServices: 'all',
+    proForEditors: ['figma', 'dev'],
+  },
 ]
 
 describe('FeatureStatus', () => {
@@ -699,6 +711,88 @@ describe('FeatureStatus', () => {
           currentEditor: 'figma',
         }).isActive()
       ).toBe(false)
+    })
+  })
+
+  describe("SHARE feature ('all' shorthand + proForEditors gating)", () => {
+    it("should be active for any service/editor when set to 'all'", () => {
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'SHARE',
+          planStatus: 'PAID',
+          currentService: 'BROWSE',
+          currentEditor: 'sketch',
+        }).isActive()
+      ).toBe(true)
+
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'SHARE',
+          planStatus: 'PAID',
+          currentService: 'PARTICIPATE',
+          currentEditor: 'framer',
+        }).isActive()
+      ).toBe(true)
+    })
+
+    it("should be gated by proForServices='all' regardless of the current service", () => {
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'SHARE',
+          planStatus: 'UNPAID',
+          currentService: 'BROWSE',
+          currentEditor: 'figma',
+        }).isBlocked()
+      ).toBe(true)
+
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'SHARE',
+          planStatus: 'PAID',
+          currentService: 'PARTICIPATE',
+          currentEditor: 'figma',
+        }).isBlocked()
+      ).toBe(false)
+    })
+
+    it('should be gated by proForEditors just like availabilityForEditors gates isActive', () => {
+      // 'dev' is in proForEditors -> pro gating applies, unpaid -> blocked
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'SHARE',
+          planStatus: 'UNPAID',
+          currentService: 'BROWSE',
+          currentEditor: 'dev',
+        }).isBlocked()
+      ).toBe(true)
+
+      // 'penpot' is NOT in proForEditors -> not gated -> never blocked
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'SHARE',
+          planStatus: 'UNPAID',
+          currentService: 'BROWSE',
+          currentEditor: 'penpot',
+        }).isBlocked()
+      ).toBe(false)
+    })
+
+    it('should not be blocked when proForEditors is omitted (BROWSE/PARTICIPATE/ADD/EXPLORE/EXPORT/IMPORT fixtures)', () => {
+      expect(
+        new FeatureStatus({
+          features: features,
+          featureName: 'PARTICIPATE',
+          planStatus: 'UNPAID',
+          currentService: 'PARTICIPATE',
+          currentEditor: 'sketch',
+        }).isBlocked()
+      ).toBe(true)
     })
   })
 
