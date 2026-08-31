@@ -1,3 +1,5 @@
+export type AllOr<T> = Array<T> | 'all'
+
 export interface Feature<T> {
   name: string
   description: string
@@ -5,9 +7,10 @@ export interface Feature<T> {
   isPro: boolean
   isNew: boolean
   limit?: number
-  availabilityForServices: Array<T>
-  availabilityForEditors: Array<Editor>
-  proForServices: Array<T>
+  availabilityForServices: AllOr<T>
+  availabilityForEditors: AllOr<Editor>
+  proForServices: AllOr<T>
+  proForEditors?: AllOr<Editor>
   type: 'SERVICE' | 'DIVISION' | 'ACTION' | 'CONTEXT'
 }
 

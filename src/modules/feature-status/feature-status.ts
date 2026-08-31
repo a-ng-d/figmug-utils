@@ -1,4 +1,7 @@
-import { Editor, Feature, PlanStatus } from '@tps/feature.types'
+import { AllOr, Editor, Feature, PlanStatus } from '@tps/feature.types'
+
+const isIncluded = <V>(list: AllOr<V> | undefined, value: V): boolean =>
+  list === undefined || list === 'all' || list.includes(value)
 
 export default class FeatureStatus<T> {
   features: Array<Feature<T>>
@@ -34,9 +37,9 @@ export default class FeatureStatus<T> {
 
   isActive(): boolean {
     if (this.result === undefined) return true
-    if (!this.result.availabilityForEditors.includes(this.currentEditor))
+    if (!isIncluded(this.result.availabilityForEditors, this.currentEditor))
       return false
-    if (!this.result.availabilityForServices.includes(this.currentService))
+    if (!isIncluded(this.result.availabilityForServices, this.currentService))
       return false
     else return this.result.isActive
   }
@@ -56,7 +59,8 @@ export default class FeatureStatus<T> {
 
     if (match === undefined) return true
 
-    if (!match.proForServices.includes(this.currentService)) return false
+    if (!isIncluded(match.proForServices, this.currentService)) return false
+    if (!isIncluded(match.proForEditors, this.currentEditor)) return false
 
     if (match.isPro && this.planStatus === 'PAID') return false
     if (!match.isPro && this.planStatus === 'PAID') return false
@@ -70,7 +74,8 @@ export default class FeatureStatus<T> {
 
     if (match === undefined) return true
 
-    if (!match.proForServices.includes(this.currentService)) return false
+    if (!isIncluded(match.proForServices, this.currentService)) return false
+    if (!isIncluded(match.proForEditors, this.currentEditor)) return false
 
     if (match.limit !== undefined) {
       if (match.isPro) {
