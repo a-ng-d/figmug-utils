@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.0] - 2026-08-31
+
+### Added
+
+- Added `AllOr<T>` type (`Array<T> | 'all'`) so `availabilityForServices`, `availabilityForEditors`, `proForServices`, and `proForEditors` can be set to `'all'` instead of enumerating every possible value
+- Added optional `proForEditors` field to `Feature<T>`, gating `isBlocked`/`isReached` by editor the same way `availabilityForEditors` gates `isActive`
+- Extended `Editor` type with `chrome` and `web`
+- Exported `AllOr`, `Editor`, and `PlanStatus` types from the package entry point
+
+### Changed
+
+- Updated Node version to 22 in the npm publish workflow and added an `npm` self-update step
+- Reorganized `.gitignore` for clarity and consistency
+
+### Removed
+
+- Removed committed coverage report artifacts from version control
+
 ## [0.8.2] - 2026-03-06
 
 ### Changed
@@ -71,6 +89,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `doMap` module for numeric range remapping
 - Exported `Feature` and `Easing` TypeScript types
 
+[0.9.0]: https://github.com/yelbolt/unoff-utils/compare/v0.8.2...v0.9.0
 [0.8.2]: https://github.com/yelbolt/unoff-utils/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/yelbolt/unoff-utils/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/yelbolt/unoff-utils/compare/v0.7.3...v0.8.0
